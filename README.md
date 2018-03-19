@@ -6,6 +6,7 @@
 - [ ] 正则表达式学习
 - [ ] nodejs 学习
     1. leftPad 源码
+- [ ] promise 学习
 
 
 ### 设计网站
