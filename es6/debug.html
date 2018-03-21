@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>debug</title>
+</head>
+<body>
+<script>
+const arrayWithoutLoop = (length) => {
+    let array = Array(length)
+
+    let recursiveFill = (array) => {
+        if(!array[--length] && length >= 0) {
+            array[length] = length;
+            return recursiveFill(array);
+        }
+    }
+
+    recursiveFill(array);
+    return array;
+}
+console.log(arrayWithoutLoop(5))
+</script>
+</body>
+</html>
