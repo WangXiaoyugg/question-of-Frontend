@@ -5,3 +5,4 @@
 3. rand-float 源码阅读
 4. unique-random 源码阅读 
 5. math-sum 源码阅读
+6. math-avg 源码阅读
