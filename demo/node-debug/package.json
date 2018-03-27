@@ -1,0 +1,19 @@
+{
+  "name": "node-debug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app":"node --inspect app.js",
+    "debug":"node --inspect=9929 app.js",
+    "brk":"node --inspect-brk=9929 app.js",
+    "start":"node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.0",
+    "koa-route": "^3.2.0"
+  }
+}
