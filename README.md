@@ -14,6 +14,8 @@
 - [ ] es6语法学习 
     1. 监听数组变化
 
+- [ ] 排序算法学习
+
 ### 设计网站
 - [codePen](https://codepen.io/)
 - [codrops](https://tympanus.net/codrops/)
