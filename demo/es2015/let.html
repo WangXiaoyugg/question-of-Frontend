@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>let-demo</title>
+</head>
+<body>
+    <div>
+        <button class="btn">A</button>
+        <button class="btn">B</button>
+        <button class="btn">C</button>
+        <button class="btn">D</button>
+    </div>
+    <div class="output">
+
+    </div>
+    <script>
+        const buttons = document.querySelectorAll('.btn')
+        const output = document.querySelector('.output')
+
+        // var 定义报错，因为for 循环结束后， i变成了3， buttons 没有下标为3的元素
+        // output 的innerText 报错
+        // for 循环的内部形成会计作用域， 变量保存在循体内
+
+        // for(var i=0; i < buttons.length; i++){
+        //     buttons[i].addEventListener('click', function(e){
+        //         output.innerText = buttons[i].innerText
+        //     },false)
+        // }
+
+        // for(let i=0; i < buttons.length; i++){
+        //     buttons[i].addEventListener('click', function(e){
+        //         output.innerText = buttons[i].innerText
+        //     },false)
+        // }
+
+        const arr1 = []
+        for(var i = 0; i < 3; i++){
+            arr1.push(() => i)
+        }
+
+        const arr2 = arr1.map(x => x());
+
+        const arr3 = []
+        for(let i = 0; i < 3; i++){
+            arr3.push(() => i)
+        }
+        const arr4 = arr3.map(x => x())
+
+        console.log('var: '  + arr2.join(', ')) // 3,3,3
+        console.log('let: ' + arr4.join(', ')) // 0,1,2
+    </script>
+</body>
+</html>

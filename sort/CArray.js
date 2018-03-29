@@ -5,12 +5,12 @@
  * methods: insert,init,setRandom, clear, toString, swap, toString;
  */
 
- function CArray(numbElements){
+function CArray(numbElements){
      this.dataStore = [];
      this.pos = 0;
      this.numbElements = numbElements;
      this.init();
- }
+}
   
 CArray.prototype.init = function () {
     for(let i = 0; i < this.numbElements; i++){
