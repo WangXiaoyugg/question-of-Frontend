@@ -56,6 +56,7 @@ function merge(target = {}, ...objs) {
         }
     }
 }
+
 // 尽量使用 ...args 代替 arguments
 console.log(merge({a:1}, {b:2}, {c:3}))
 

@@ -7,4 +7,4 @@ const valObject = {score: 100}
 weakm.set(keyObject,valObject);
 weakm.get(keyObject) // => {score: 100}
 keyObject = null;
-console.log(weakm.has(keyObject))// false;
+console.log(weakm.has(keyObject)) // false;

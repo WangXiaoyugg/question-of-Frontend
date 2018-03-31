@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class-demo</title>
+</head>
+<body>
+<script>
+// Node 类, node 实例之间建立从属关系，且每一个node实例下方可以带有多个node子实例
+// Node 类自身可以检索到所有实例的数量
+
+class Node {
+    constructor(parent = null) {
+        this.__parent = parent
+        this.__children = new Set()
+
+        if(this.isRoot){
+            Node.addRoot(this);
+        }
+    }
+
+    // 判断是否是根结点
+    get isRoot() {
+        return !this.__parent
+    }
+
+    // 存储根节点
+    static addRoot(root) {
+        Node.roots = !Node.roots ? [ root ] : Node.roots.concat([ root ])
+    }
+    
+    // 添加子节点 
+    createChild() {
+        const node = new Node(this);
+        this.__children.add(node)
+        return node;
+    }
+
+    // 删除当前节点
+    removeFromParent() {
+        this.__parent = null;
+        this.__parent.__children.delete(this);
+    }
+
+    // 计算自身在内所有向下子节点数量 ,怎么递归的？
+    get size() {
+        let size = 0;
+        for (const node of this.__children) {
+            size += node.size
+        }
+        size = size ? size + 1 : 1
+        return size;
+    }
+
+    // 所有根节点求和，得到所有节点的数量
+    static get size() {
+        return Node.roots.map(root => root.size).reduce((a, b) => a + b)
+    }
+}
+
+const root1 = new Node()
+root1.createChild().createChild();
+const root2 = new Node()
+root2.createChild();
+
+console.log(root1.size) //3
+console.log(root2.size) //2
+console.log(Node.size) //5
+</script>
+</body>
+</html>
