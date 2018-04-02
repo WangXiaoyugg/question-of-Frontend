@@ -1,0 +1,19 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "webpack-demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "webpack": "webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "webpackp-demo"
+  ],
+  "author": "garen",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13"
+  }
+}
