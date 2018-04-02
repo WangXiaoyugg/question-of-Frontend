@@ -1,5 +1,7 @@
 const path = require('path')
 const UglifyPlugin = require('uglifyjs-webpack-plugin')
+const HtmlPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   mode: 'development',  
@@ -19,6 +21,27 @@ module.exports = {
         ],
         use: 'babel-loader',
       },
+      {
+        test:/\.less$/,
+        include: [
+          path.resolve(__dirname,'src')
+        ],
+        use: ExtractTextPlugin.extract({
+          fallback:'style-loader',
+          use:['css-loader','less-loader']
+        })
+      },
+      {
+        test:/\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]'
+            }
+          }
+        ]
+      }
     ],
   },
 
@@ -33,6 +56,12 @@ module.exports = {
   },
 
   plugins: [
-    new UglifyPlugin(), 
+    new UglifyPlugin(),
+    new HtmlPlugin({
+      filename:'index.html',
+      template:'assets/index.html'
+    }), 
+    // 引入插件。配置文件名，同样可以使用hash
+    new ExtractTextPlugin('index.[hash:7].css')
   ],
 }

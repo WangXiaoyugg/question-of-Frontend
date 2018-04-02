@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "webpack": "webpack --config webpack.config.js"
+    "webpack": "rimraf ./dist && webpack --config webpack.config.js",
+    "server":"webpack-dev-server --mode development"
   },
   "keywords": [
     "webpackp-demo"
@@ -14,8 +15,17 @@
   "license": "MIT",
   "devDependencies": {
     "babel-loader": "^7.1.4",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.1.0",
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.20.3",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.4.1",
-    "webpack-cli": "^2.0.13"
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
   }
 }
