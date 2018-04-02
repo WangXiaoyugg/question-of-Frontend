@@ -48,11 +48,20 @@ module.exports = {
   // 代码模块路径解析的配置
   resolve: {
     modules: [
+      path.resolve(__dirname, 'node_modules'),// 指定当前目录下的node_modules 优先查找
       "node_modules",
       path.resolve(__dirname, 'src')
     ],
-
     extensions: [".wasm", ".mjs", ".js", ".json", ".jsx"],
+    alias:{
+      utils: path.resolve(__dirname, 'src/utils')
+    },
+    mainFields: ['browser','module', 'main'],
+    mainFiles:['index'], // 项目目录下没有package.json, 默认使用目录下的index.js
+    // resolveLoader: { // 用于配置解析 loader 时的 resolve 配置
+    //   extensions: ['.js','.json'],
+    //   mainFields: ['loader','main']
+    // }
   },
 
   plugins: [
