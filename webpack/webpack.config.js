@@ -1,33 +1,38 @@
-// module.exports = {
-//     "mode":"development",
-//     "entry": './src/index.js'
-// }
+const path = require('path')
+const UglifyPlugin = require('uglifyjs-webpack-plugin')
 
-// //等同于, 默认是main
-// module.exports = {
-//     "mode":"development",
-//     entry: {
-//         main: './src/index.js'
-//     }
-// }
-
-// //多入口， 会分开打包
-// module.exports = {
-//     mode:"development",
-//     entry: {
-//         foo: './src/foo.js',
-//         bar: './src/bar.js'
-//     }
-// }
-
-// // 使用数组打包 , 会打包到一个main.js 中
 module.exports = {
-    mode:"development",
-    entry: {
-        main: [
-            './src/foo.js',
-            './src/bar.js'
-        ]
-    }
-}
+  mode: 'development',  
+  entry: './src/index.js',
 
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.[hash:7].js',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.jsx?/,
+        include: [
+          path.resolve(__dirname, 'src')
+        ],
+        use: 'babel-loader',
+      },
+    ],
+  },
+
+  // 代码模块路径解析的配置
+  resolve: {
+    modules: [
+      "node_modules",
+      path.resolve(__dirname, 'src')
+    ],
+
+    extensions: [".wasm", ".mjs", ".js", ".json", ".jsx"],
+  },
+
+  plugins: [
+    new UglifyPlugin(), 
+  ],
+}
