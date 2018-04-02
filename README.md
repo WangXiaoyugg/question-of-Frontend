@@ -18,6 +18,10 @@
 
 - [ ] webpack 学习
 
+- [ ] 博客学习
+    1. [console的debug技巧](https://segmentfault.com/a/1190000013950518?utm_source=feed-content)
+    2. [2018 年了，你还是只会 npm install 吗](https://segmentfault.com/a/1190000013962514?utm_source=feed-content)
+
 ### 设计网站
 - [codePen](https://codepen.io/)
 - [codrops](https://tympanus.net/codrops/)
