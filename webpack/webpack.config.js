@@ -13,6 +13,7 @@ module.exports = {
   },
 
   module: {
+    noParse: /jquery|lodash/,
     rules: [
       {
         test: /\.jsx?/,
@@ -28,7 +29,21 @@ module.exports = {
         ],
         use: ExtractTextPlugin.extract({
           fallback:'style-loader',
-          use:['css-loader','less-loader']
+          use:[
+            {
+              loader:'css-loader', 
+              options: {
+                importLoaders: 1, // 在css-loader前使用的loader数量
+              }
+            },{
+              loader:'postcss-loader'
+            },{
+              loader:'less-loader',
+              options: {
+                noIeCompat: true
+              }
+            }
+          ]
         })
       },
       {
@@ -41,9 +56,11 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      
     ],
   },
+ 
 
   // 代码模块路径解析的配置
   resolve: {
@@ -58,10 +75,6 @@ module.exports = {
     },
     mainFields: ['browser','module', 'main'],
     mainFiles:['index'], // 项目目录下没有package.json, 默认使用目录下的index.js
-    // resolveLoader: { // 用于配置解析 loader 时的 resolve 配置
-    //   extensions: ['.js','.json'],
-    //   mainFields: ['loader','main']
-    // }
   },
 
   plugins: [
